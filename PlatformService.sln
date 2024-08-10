@@ -5,8 +5,6 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlatformService", "PlatformService\PlatformService.csproj", "{57980B87-D47F-4FAF-BA02-A5E8F1344BAF}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{8211483B-56A9-4211-9D27-80D7EED3125E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformTests", "..\PlatformTests\PlatformTests.csproj", "{8B9CD971-9CBC-43EE-B704-F5C614A6159E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "K8S", "K8S", "{BECD8335-FFF6-46AA-9098-8397F43C05F4}"
@@ -20,6 +18,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "K8S", "K8S", "{BECD8335-FFF
 		rabbitmq-depl.yaml = rabbitmq-depl.yaml
 	EndProjectSection
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{5900C3BD-F691-415D-8C35-BBCE49FE557E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "..\Tests\Tests.csproj", "{BEADB2B6-A61D-4704-A6CD-62AB134BACD9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,14 +32,18 @@ Global
 		{57980B87-D47F-4FAF-BA02-A5E8F1344BAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57980B87-D47F-4FAF-BA02-A5E8F1344BAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57980B87-D47F-4FAF-BA02-A5E8F1344BAF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8211483B-56A9-4211-9D27-80D7EED3125E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8211483B-56A9-4211-9D27-80D7EED3125E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8211483B-56A9-4211-9D27-80D7EED3125E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8211483B-56A9-4211-9D27-80D7EED3125E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8B9CD971-9CBC-43EE-B704-F5C614A6159E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8B9CD971-9CBC-43EE-B704-F5C614A6159E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B9CD971-9CBC-43EE-B704-F5C614A6159E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B9CD971-9CBC-43EE-B704-F5C614A6159E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5900C3BD-F691-415D-8C35-BBCE49FE557E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5900C3BD-F691-415D-8C35-BBCE49FE557E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5900C3BD-F691-415D-8C35-BBCE49FE557E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5900C3BD-F691-415D-8C35-BBCE49FE557E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEADB2B6-A61D-4704-A6CD-62AB134BACD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEADB2B6-A61D-4704-A6CD-62AB134BACD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEADB2B6-A61D-4704-A6CD-62AB134BACD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEADB2B6-A61D-4704-A6CD-62AB134BACD9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

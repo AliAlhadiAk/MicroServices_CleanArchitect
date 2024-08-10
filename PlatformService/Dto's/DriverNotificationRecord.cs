@@ -1,4 +1,4 @@
 ﻿namespace PlatformService.Dto_s
 {
-	public record DriverNotificationRecord(Guid DriverId,string DriverName);
+	public record DriverNotificationRecord(string PlatformName ,string Publisher);
 }

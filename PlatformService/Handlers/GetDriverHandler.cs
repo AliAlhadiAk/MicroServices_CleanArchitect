@@ -32,7 +32,6 @@ public class GetPlatformHandler : IRequestHandler<GetPlatformQuery, PlatformRead
 		// Map the platform item to the DTO
 		var platformReadDto = _mapper.Map<PlatformReadDto>(platformItem);
 
-		await _driverNotification.SendNotification(platformReadDto);
 		return platformReadDto;
 	}
 }

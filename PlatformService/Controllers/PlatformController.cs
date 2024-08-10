@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using MassTransit.Mediator;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PlatformService.Commands;
@@ -40,7 +40,7 @@ namespace PlatformService.Controllers
 			try
 			{
 				var query = new GetPlatformQuery(id);
-				var result = await _mediator.Send(query);
+                var result =  _mediator.Send(query);
 				return Ok(result);
 			}
              catch(NotFoundException ex) 
@@ -61,5 +61,20 @@ namespace PlatformService.Controllers
 			var result = _mediator.Send(command);
 			return CreatedAtRoute(nameof(GetPlatformById), new { Id = result.Id }, result);
 		}
-	}
+
+		[HttpDelete("{Id:int}")]
+
+        public async Task<IActionResult> DeletePlatformById(int Id)
+        {
+            var query = new DeletePlatformByIdQuery(Id);
+            var result = await _mediator.Send(query);
+
+            if(result == false)
+			{
+                return NotFound("Platfomr not found");
+            }
+			return Ok("Platform Deleted Succesfully");
+        
+        }
+    }
 }

@@ -1,4 +1,6 @@
+using MassTransit.Caching;
 using Microsoft.AspNetCore.Mvc;
+using PlatformService.Data.Repos.Caching;
 
 namespace PlatformService.Controllers
 {
@@ -12,22 +14,20 @@ namespace PlatformService.Controllers
 		};
 
 		private readonly ILogger<WeatherForecastController> _logger;
+		private readonly ICacheService _cacheService;
 
-		public WeatherForecastController(ILogger<WeatherForecastController> logger)
+		public WeatherForecastController(ILogger<WeatherForecastController> logger, ICacheService cacheService)
 		{
 			_logger = logger;
+			_cacheService = cacheService;
 		}
 
 		[HttpGet(Name = "GetWeatherForecast")]
-		public IEnumerable<WeatherForecast> Get()
+		public async Task<IActionResult> Get()
 		{
-			return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-			{
-				Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-				TemperatureC = Random.Shared.Next(-20, 55),
-				Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-			})
-			.ToArray();
+			 _cacheService.SetData<List<string>>("Key", new List<string> { "Ali", "Sara" }, TimeSpan.FromHours(1));
+			var getRedis =  _cacheService.GetData<List<string>>("Key");
+			return Ok(getRedis);
 		}
 	}
 }

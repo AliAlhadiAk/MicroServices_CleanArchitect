@@ -14,11 +14,13 @@ namespace PlatformService.Services.RabbitMq_MassTransit
             _publishEndpoint = publishEndpoint;
         }
 
-		public async Task SendNotification(Guid driverId, string teamName)
+		public async Task SendNotification(string PlatformName, string Publisher)
 		{
 			_logger.LogInformation("Notification Sending Started .....");
-			await _publishEndpoint.Publish(new DriverNotificationRecord(driverId, teamName));
+			await _publishEndpoint.Publish(new DriverNotificationRecord(PlatformName, Publisher));
 
 		}
-	}
+
+        
+    }
 }

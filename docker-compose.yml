@@ -8,13 +8,8 @@ services:
       dockerfile: PlatformService/Dockerfile
     depends_on:
       - redis
-      - sqlserver
       - rabbitmq
     environment:
-      - REDIS_HOST=redis
-      - SQLSERVER_HOST=sqlserver
-      - SQLSERVER_USER=sa
-      - SQLSERVER_PASSWORD=YourStrong!Passw0rd
       - RABBITMQ_HOST=rabbitmq
       - RABBITMQ_PORT=5672
       - RABBITMQ_USER=guest
@@ -26,18 +21,12 @@ services:
     image: redis:latest
     volumes:
       - redis-data:/data
+    ports:
+     - 6379:6379
     networks:
       - app-network
 
-  sqlserver:
-    image: mcr.microsoft.com/mssql/server:2019-latest
-    environment:
-      - ACCEPT_EULA=Y
-      - SA_PASSWORD=YourStrong!Passw0rd
-    volumes:
-      - sqlserver-data:/var/opt/mssql
-    networks:
-      - app-network
+ 
 
   rabbitmq:
     image: rabbitmq:3-management

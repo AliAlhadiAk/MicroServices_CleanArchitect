@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alial\\source\\repos\\PlatformService\\PlatformService\\PlatformService.csproj": {}
+    "C:\\Users\\Alialhadi\\Source\\Repos\\AliAlhadiAk\\MicroServices_CleanArchitect\\PlatformService\\PlatformService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alial\\source\\repos\\PlatformService\\PlatformService\\PlatformService.csproj": {
+    "C:\\Users\\Alialhadi\\Source\\Repos\\AliAlhadiAk\\MicroServices_CleanArchitect\\PlatformService\\PlatformService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alial\\source\\repos\\PlatformService\\PlatformService\\PlatformService.csproj",
+        "projectUniqueName": "C:\\Users\\Alialhadi\\Source\\Repos\\AliAlhadiAk\\MicroServices_CleanArchitect\\PlatformService\\PlatformService.csproj",
         "projectName": "PlatformService",
-        "projectPath": "C:\\Users\\alial\\source\\repos\\PlatformService\\PlatformService\\PlatformService.csproj",
-        "packagesPath": "C:\\Users\\alial\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alial\\source\\repos\\PlatformService\\PlatformService\\obj\\",
+        "projectPath": "C:\\Users\\Alialhadi\\Source\\Repos\\AliAlhadiAk\\MicroServices_CleanArchitect\\PlatformService\\PlatformService.csproj",
+        "packagesPath": "C:\\Users\\Alialhadi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Alialhadi\\Source\\Repos\\AliAlhadiAk\\MicroServices_CleanArchitect\\PlatformService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\alial\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Alialhadi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -34,6 +35,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -63,6 +69,14 @@
             "MediatR.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[11.1.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Testing": {
+              "target": "Package",
+              "version": "[8.0.7, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -94,6 +108,10 @@
               "target": "Package",
               "version": "[4.20.70, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
             "StackExchange.Redis": {
               "target": "Package",
               "version": "[2.8.0, )"
@@ -101,6 +119,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[8.0.4, )"
             },
             "xunit": {
               "target": "Package",
@@ -126,7 +148,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -2,6 +2,6 @@
 {
 	public interface IDriverNotificationPublisherService
 	{
-		Task SendNotification(Guid driverId, string teamName);
+		Task SendNotification(string PlatformName, string Publisher);
 	}
 }

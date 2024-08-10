@@ -9,5 +9,6 @@ namespace PlatformService.Data.Repos
 		Task<IEnumerable<Platfrom>> GetAllPlatforms();
 		Task<Platfrom> GetPlafromById(int id);
 		Task CreatePlatform(Platfrom platfrom);
+		Task<bool> DeletePlatform(int id);
 	}
 }
