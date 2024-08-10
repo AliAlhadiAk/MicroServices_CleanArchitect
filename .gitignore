@@ -1,0 +1,14 @@
+# Visual Studio files
+.vs/
+
+# Build artifacts
+obj/
+bin/
+
+# Docker and Kubernetes config files
+*.yml
+*.yaml
+
+# Others
+commands-depl.yml
+platform-depl.yaml
