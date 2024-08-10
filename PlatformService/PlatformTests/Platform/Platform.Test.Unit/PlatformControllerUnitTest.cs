@@ -86,5 +86,49 @@ namespace PlatformService.Tests
 
 			Assert.IsType<NotFoundResult>(result);
 		}
+		[Fact]
+		public async Task CreatePlatform_ReturnsCreatedAtRouteResult_WhenPlatformIsCreated()
+		{
+			// Arrange
+			var platformCreateDto = new PlatformCreateDto
+			{
+			};
+
+			var platformModel = new Models.Platfrom
+			{
+				Id = 1 
+			};
+
+			var platformReadDto = new PlatformReadDto
+			{
+				Id = platformModel.Id
+			
+			};
+
+			_mapperMock
+				.Setup(m => m.Map<Models.Platfrom>(It.IsAny<PlatformCreateDto>()))
+				.Returns(platformModel);
+
+			_mapperMock
+				.Setup(m => m.Map<PlatformReadDto>(It.IsAny<Models.Platfrom>()))
+				.Returns(platformReadDto);
+
+			_platformRepoMock
+				.Setup(repo => repo.CreatePlatform(It.IsAny<Models.Platfrom>()))
+				.Returns(Task.CompletedTask);
+
+			_platformRepoMock
+				.Setup(repo => repo.SaveChanges())
+				.Returns(Task.CompletedTask);
+
+			// Act
+			var result = await _controller.CreatePlatform(platformCreateDto);
+
+			// Assert
+			var createdAtRouteResult = Assert.IsType<CreatedAtRouteResult>(result);
+			var returnedPlatform = Assert.IsType<PlatformReadDto>(createdAtRouteResult.Value);
+
+			Assert.Equal(platformReadDto.Id, returnedPlatform.Id);
+		}
 	}
 }

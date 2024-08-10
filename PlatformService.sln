@@ -9,6 +9,17 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformTests", "..\PlatformTests\PlatformTests.csproj", "{8B9CD971-9CBC-43EE-B704-F5C614A6159E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "K8S", "K8S", "{BECD8335-FFF6-46AA-9098-8397F43C05F4}"
+	ProjectSection(SolutionItems) = preProject
+		commands-depl.yml = commands-depl.yml
+		ingress-srv.yaml = ingress-srv.yaml
+		local-pvc.yaml = local-pvc.yaml
+		mssql-plat-depl.yaml = mssql-plat-depl.yaml
+		platform-depl.yaml = platform-depl.yaml
+		platforms-np-srv.yaml = platforms-np-srv.yaml
+		rabbitmq-depl.yaml = rabbitmq-depl.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -1,8 +1,12 @@
 ﻿using AutoMapper;
+using MassTransit.Mediator;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PlatformService.Commands;
 using PlatformService.Data.Repos;
 using PlatformService.Dto_s;
+using PlatformService.Exceptions;
+using PlatformService.Queries;
 using PlatformService.Services.RabbitMq_MassTransit;
 
 namespace PlatformService.Controllers
@@ -11,15 +15,12 @@ namespace PlatformService.Controllers
 	[ApiController]
 	public class PlatformController : ControllerBase
 	{
-		private readonly IMapper _mapper;
-		private readonly IPlatformRepo _platformRepo;
-		private readonly IDriverNotificationPublisherService _driverNotification;
 
-        public PlatformController(IMapper mapper, IPlatformRepo platformRepo, IDriverNotificationPublisherService driverNotification)
+		private readonly IMediator _mediator;
+
+        public PlatformController(IMediator mediator)
         {
-            _mapper = mapper;
-			_platformRepo = platformRepo;
-			_driverNotification = driverNotification;
+			_mediator = mediator;
         }
 
 
@@ -28,21 +29,37 @@ namespace PlatformService.Controllers
 		{
 			Console.WriteLine("--> Getting Platforms....");
 
-			var platformItem = await _platformRepo.GetAllPlatforms();
-
-			return Ok(_mapper.Map<IEnumerable<PlatformReadDto>>(platformItem));
+			var query = new GetAllPlatformsQuery();
+			var result = _mediator.Send(query);
+			return Ok(result);
 		}
 
 		[HttpGet("{id}", Name = "GetPlatformById")]
 		public async Task<IActionResult> GetPlatformById(int id)
 		{
-			var platformItem = await _platformRepo.GetPlafromById(id);
-			if (platformItem != null)
+			try
 			{
-				return Ok(_mapper.Map<PlatformReadDto>(platformItem));
+				var query = new GetPlatformQuery(id);
+				var result = await _mediator.Send(query);
+				return Ok(result);
 			}
+             catch(NotFoundException ex) 
+			{ 
+				return NotFound(new { Message = ex.Message });
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, new { Message = "An unexpected error occurred.", Details = ex.Message });
+			}
+		}
 
-			return NotFound();
+		[HttpPost]
+
+		public async Task<IActionResult> CreatePlatform(PlatformCreateDto platformCreateDto)
+		{
+			var command = new CreatePlatformInfoRequest(platformCreateDto);
+			var result = _mediator.Send(command);
+			return CreatedAtRoute(nameof(GetPlatformById), new { Id = result.Id }, result);
 		}
 	}
 }
