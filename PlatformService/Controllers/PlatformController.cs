@@ -17,10 +17,12 @@ namespace PlatformService.Controllers
 	{
 
 		private readonly IMediator _mediator;
+		private readonly IPlatformRepo _platformService;
 
-        public PlatformController(IMediator mediator)
+        public PlatformController(IMediator mediator, IPlatformRepo platformRepo)
         {
 			_mediator = mediator;
+            _platformService = platformRepo;
         }
 
 
@@ -29,12 +31,11 @@ namespace PlatformService.Controllers
 		{
 			Console.WriteLine("--> Getting Platforms....");
 
-			var query = new GetAllPlatformsQuery();
-			var result = _mediator.Send(query);
-            if(result == null) 
-				return NoContent();
-			return Ok(result);
-		}
+            var query = new GetAllPlatformsQuery();
+            var result = await _mediator.Send(query);
+            
+            return Ok(result);
+        }
 
 		[HttpGet("{id}", Name = "GetPlatformById")]
 		public async Task<IActionResult> GetPlatformById(int id)
@@ -42,13 +43,16 @@ namespace PlatformService.Controllers
 			try
 			{
 				var query = new GetPlatformQuery(id);
-                var result =  _mediator.Send(query);
+                var result = await _mediator.Send(query);
 				return Ok(result);
 			}
+
              catch(NotFoundException ex) 
-			{ 
+
+			 { 
 				return NotFound(new { Message = ex.Message });
-			}
+			 }
+
 			catch (Exception ex)
 			{
 				return StatusCode(500, new { Message = "An unexpected error occurred.", Details = ex.Message });
@@ -60,7 +64,7 @@ namespace PlatformService.Controllers
 		public async Task<IActionResult> CreatePlatform(PlatformCreateDto platformCreateDto)
 		{
 			var command = new CreatePlatformInfoRequest(platformCreateDto);
-			var result = _mediator.Send(command);
+			var result = await _mediator.Send(command);
 			return CreatedAtRoute(nameof(GetPlatformById), new { Id = result.Id }, result);
 		}
 
@@ -69,14 +73,10 @@ namespace PlatformService.Controllers
         public async Task<IActionResult> DeletePlatformById(int Id)
         {
             var query = new DeletePlatformByIdQuery(Id);
-            var result = await _mediator.Send(query);
+             await _mediator.Send(query);
 
-            if(result == false)
-			{
-                return NotFound("Platfomr not found");
-            }
-			return Ok("Platform Deleted Succesfully");
-        
+            return Ok("Platform Deleted Succesfully");
+
         }
     }
 }
