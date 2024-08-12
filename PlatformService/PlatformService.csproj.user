@@ -4,5 +4,6 @@
     <ActiveDebugProfile>Docker</ActiveDebugProfile>
     <Controller_SelectedScaffolderID>ApiControllerEmptyScaffolder</Controller_SelectedScaffolderID>
     <Controller_SelectedScaffolderCategoryPath>root/Common/Api</Controller_SelectedScaffolderCategoryPath>
+    <NameOfLastUsedPublishProfile>C:\Users\Alialhadi\Source\Repos\AliAlhadiAk\MicroServices_CleanArchitect\PlatformService\Properties\PublishProfiles\registry.hub.docker.com_Alialhadi Abokhalil.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

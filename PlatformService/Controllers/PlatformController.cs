@@ -31,6 +31,8 @@ namespace PlatformService.Controllers
 
 			var query = new GetAllPlatformsQuery();
 			var result = _mediator.Send(query);
+            if(result == null) 
+				return NoContent();
 			return Ok(result);
 		}
 

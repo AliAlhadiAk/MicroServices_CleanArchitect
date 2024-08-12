@@ -14,7 +14,7 @@ namespace BlogApp.Net.Services
             _cachedb = connectionMultiplexer.GetDatabase();
         }
 
-        public T GetData<T>(string key)
+        public  T GetData<T>(string key)
         {
             try
             {

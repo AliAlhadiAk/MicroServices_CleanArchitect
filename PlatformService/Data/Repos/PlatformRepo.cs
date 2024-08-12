@@ -80,21 +80,21 @@ namespace PlatformService.Data.Repos
             const string cacheKey = "all_platforms";
             const int cacheDurationInMinutes = 10;
 
-            var cachedPlatforms = _cacheService.GetData<IEnumerable<Models.Platfrom>>(cacheKey);
+            var cachedPlatforms =   _cacheService.GetData<IEnumerable<Models.Platfrom>>(cacheKey);
 
             if (cachedPlatforms != null && cachedPlatforms.Any())
             {
                 Console.WriteLine("--> Retrieved data from cache.");
-                return cachedPlatforms;
+                return cachedPlatforms.ToList();
             }
-
+        
             var platforms = await _context.Platforms.ToListAsync();
 
             Console.WriteLine($"--> Retrieved data from database. Count: {platforms.Count}");
 
             _cacheService.SetData(cacheKey, platforms, TimeSpan.FromMinutes(cacheDurationInMinutes));
 
-            return platforms;
+            return platforms.ToList();
         }
 
 
@@ -108,7 +108,7 @@ namespace PlatformService.Data.Repos
             }
 
             var cacheKey = $"platform_{id}";
-            var cachedPlatform = _cacheService.GetData<Models.Platfrom>(cacheKey);
+            var cachedPlatform =  _cacheService.GetData<Models.Platfrom>(cacheKey);
             if (cachedPlatform != null)
             {
                 return cachedPlatform;

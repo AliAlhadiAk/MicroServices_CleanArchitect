@@ -2,9 +2,9 @@
 {
      public interface ICacheService
 	 { 
-	    T GetData<T>(string key);
+	    public T GetData<T>(string key);
 		public bool SetData<T>(string key, T value, TimeSpan expirationTime);       
-		object RemoveData(string key);
+		public object RemoveData(string key);
 		public bool UpdateCacheIfExists<T>(string key, T value, TimeSpan expirationTime);
 
 

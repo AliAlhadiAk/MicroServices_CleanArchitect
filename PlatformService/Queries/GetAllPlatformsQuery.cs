@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using PlatformService.Dto_s;
+using System.ComponentModel;
 
 namespace PlatformService.Queries
 {
