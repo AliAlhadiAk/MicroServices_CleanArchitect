@@ -7,7 +7,7 @@ namespace PlatformService.Queries
         public int Id { get; set; }
         public DeletePlatformByIdQuery(int PlatformId)
         {
-            PlatformId = this.Id;
+            Id = PlatformId
         }
     }
 }
